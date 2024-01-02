@@ -1,0 +1,64 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css"></style>
+    <script src="jquery-3.4.1.js"></script>
+</head>
+<body>
+    <div id='view' style='width: 200px; height: 100px;'></div>
+    <script>
+        var arrData = [{
+            key: 0
+        }, {
+            key: 1
+        }, {
+            key: 2
+        }, {
+            key: 3
+        }, {
+            key: 4
+        }, {
+            key: 5
+        }, {
+            key: 6
+        }, {
+            key: 7
+        }, {
+            key: 8
+        }, {
+            key: 9
+        }];
+        var arrDuble = [{
+            key: 0
+        }, {
+            key: 1
+        }, {
+            key: 2
+        }, {
+            key: 9
+        }];
+
+        var changeData = myGlobVar.dataForAllBrigads.filter(function (list) {
+            var excesFilter = null;
+            myGlobVar.filterToSendExcesses.forEach(function (exces) {
+                if (list.id == exces.excessId) {
+                    excesFilter = exces.isDisabled;
+                }
+            });
+
+            if (excesFilter != null) {
+                list.isDisabled = excesFilter;
+                return list;
+            }
+            else {
+                return list;
+            }
+        });
+
+        console.log(JSON.stringify(data));
+        $('#view').html(JSON.stringify(data));
+    </script>
+</body>
+</html>

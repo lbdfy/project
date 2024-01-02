@@ -1,0 +1,76 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css"></style>
+	<script src="jquery-3.4.1.js"></script>
+</head>
+<body>
+	<div id='view' style='width: 200px; height: 100px;'></div>
+	<script>
+    var data = ['Коля', 'Вася', 'Петя', 'Белка'];
+    data.sort(function (a, b) {
+        var nameA = a.toLowerCase();
+        var nameB = b.toLowerCase();
+        if (nameA < nameB) //сортируем строки по возрастанию
+            return -1
+        if (nameA > nameB)
+            return 1
+        return 0 // Никакой сортировки
+    })
+	// console.log(data);
+	$('#view').html(data);
+
+    let V1 = 100;
+    let V2 = 200;
+    let V3 = 400;
+    let S = 1200;
+    let Ssobaki = 0;
+    let Tsobaki = 0;
+    let Naprav = 1;
+
+    while (S >= 0.01) {
+        let T = 0;
+
+        if (Naprav == 0) {
+            T = S / (V3 + V2);
+
+            Naprav = 1;
+        } else {
+            T = S / (V3 + V1);
+
+            Naprav = 0;
+        }
+
+        S = S - (T * V1) - (T * V2);
+        
+        Ssobaki = Ssobaki + (T * V3);
+        console.log('S: ' + S);
+
+        Tsobaki = Tsobaki + T;
+        console.log('T: ' + Tsobaki);
+    }
+
+    console.log(Ssobaki);
+    console.log(Tsobaki);
+	
+		//сортировка по имени и коду
+        //results.sort(function (a, b) {
+        //    var codeA = a.code;
+        //    var codeB = b.code;
+        //    var nameA = a.name;
+        //    nameA = nameA == null ? '' : nameA.toLowerCase();
+        //    var nameB = b.name;
+        //    nameB = nameB == null ? '' : nameB.toLowerCase();
+
+        //    if (codeA < codeB) return -1;
+        //    if (codeA > codeB) return 1;
+        //    if (nameA < nameB) return -1;
+        //    if (nameA > nameB) return 1;
+
+        //    return 0;
+        //});
+	</script>
+</body>
+</html>

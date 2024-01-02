@@ -1,0 +1,76 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css"></style>
+    <script src="jquery-3.4.1.js"></script>
+</head>
+<body>
+    <div id='view' style='width: 200px; height: 100px;'></div>
+    <script>
+        var arrData = [{
+            key: 0
+        }, {
+            key: 1
+        }, {
+            key: 2
+        }, {
+            key: 3
+        }, {
+            key: 4
+        }, {
+            key: 5
+        }, {
+            key: 6
+        }, {
+            key: 7
+        }, {
+            key: 8
+        }, {
+            key: 9
+        }];
+        var arrDuble = [{
+            key: 0
+        }, {
+            key: 1
+        }, {
+            key: 2
+        }, {
+            key: 9
+        }];
+
+        var data = arrData.filter(function (number) {
+            var temp = 0;
+            arrDuble.forEach(function (list) {
+                if (number.key == list.key) {
+                    temp = number.key;
+                }
+            });
+            if (number.key != temp) {
+                return number;
+            }
+        });
+
+        //var allUnchecked = [];
+        //allRows.forEach(function (row) {
+        //    var temp = false;
+        //    allChecked.forEach(function (check) {
+        //        if (row.excessId == check.excessId) {
+        //            temp = true;
+        //        }
+        //    });
+        //    if (!temp) {
+        //        allUnchecked.push({
+        //            excessId: row.excessId,
+        //            isDisabled: false,
+        //        });
+        //    }
+        //});
+        //console.log(allUnchecked);
+
+        console.log(JSON.stringify(data));
+        $('#view').html(JSON.stringify(data));
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css"></style>
+    <script src="jquery-3.4.1.js"></script>
+</head>
+<body>
+    <div id='view' style='width: 200px; height: 100px;'></div>
+    <script>
+        var arrayWithDuplicates = [
+            { "type": "LICENSE", "licenseNum": "12345", state: "NV" },
+            { "type": "LICENSE", "licenseNum": "A7846", state: "CA" },
+            { "type": "LICENSE", "licenseNum": "12345", state: "OR" },
+            { "type": "LICENSE", "licenseNum": "10849", state: "CA" },
+            { "type": "LICENSE", "licenseNum": "B7037", state: "WA" },
+            { "type": "LICENSE", "licenseNum": "12345", state: "NM" }
+        ];
+
+        function removeDuplicates(originalArray, prop) {
+            var newArray = [];
+            var lookupObject = {};
+
+            for (var i in originalArray) {
+                lookupObject[originalArray[i][prop]] = originalArray[i];
+            }
+
+            for (i in lookupObject) {
+                newArray.push(lookupObject[i]);
+            }
+            return newArray;
+        }
+
+        var uniqueArray = removeDuplicates(arrayWithDuplicates, "licenseNum");
+        console.log("uniqueArray is: " + JSON.stringify(uniqueArray));
+        $('#view').html("uniqueArray is: " + JSON.stringify(uniqueArray));
+    </script>
+</body>
+</html>
